@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- подключаем стили Mocha, для отображения результатов -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css"
+      <!--
+      подключаем
+      библиотеку
+      Mocha
+      --
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+    <!-- настраиваем Mocha: предстоит BDD-тестирование -->
+    <script>
+      mocha.setup("bdd");
+    </script>
+    <!-- подключаем chai -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+    <!-- в chai есть много всего, выносим assert в глобальную область -->
+    <script>
+      var assert = chai.assert;
+    </script>
+  </head>
+  <body>
+    <script src="/hw1/cycle/task1.js"></script>
+    <script src="/hw1/cycle/task2.js"></script>
+    <script src="/hw1/cycle/task3.js"></script>
+    <script src="/hw1/cycle/task4.js"></script>
+    <script src="/hw1/cycle/task5.js"></script>
+    <script src="/hw1/cycle/task6.js"></script>
+
+    <script>
+      //folder cucle
+      describe("getSumEven", function() {
+        it("impart a= 6", function() {
+          assert.equal(getSumEven(6), "12,3");
+        });
+      });
+      describe("getSimpleDigit", function() {
+        it("impart a= 6", function() {
+          assert.equal(getSimpleDigit(6), "digit NOT simple");
+        });
+        it("impart a= 7", function() {
+          assert.equal(getSimpleDigit(7), "digit simple");
+        });
+      });
+      describe("getSqr", function() {
+        it("impart a= 625", function() {
+          assert.equal(getSqr(625), 25);
+        });
+        it("impart a= 16", function() {
+          assert.equal(getSqr(16), 4);
+        });
+      });
+      describe("getFac", function() {
+        it("impart a= 4", function() {
+          assert.equal(getFac(4), 24);
+        });
+        it("impart a= 16", function() {
+          assert.equal(getFac(5), 120);
+        });
+      });
+      describe("geDigitSum", function() {
+        it("impart a= 4", function() {
+          assert.equal(getDigitSum(41), 5);
+        });
+        it("impart a= 16", function() {
+          assert.equal(getDigitSum(152), 8);
+        });
+      });
+      describe("getDigitRevers", function() {
+        it("impart a= 4", function() {
+          assert.equal(getDigitRevers(41), 14);
+        });
+        it("impart a= 16", function() {
+          assert.equal(getDigitRevers(152), 251);
+        });
+      });
+    </script>
+
+    <!-- в элементе с id="mocha" будут результаты тестов -->
+    <div id="mocha"></div>
+    <!-- запустить тесты! -->
+    <script>
+      mocha.run();
+    </script>
+  </body>
+</html>

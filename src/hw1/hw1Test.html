@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- подключаем стили Mocha, для отображения результатов -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css"
+      <!--
+      подключаем
+      библиотеку
+      Mocha
+      --
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+    <!-- настраиваем Mocha: предстоит BDD-тестирование -->
+    <script>
+      mocha.setup("bdd");
+    </script>
+    <!-- подключаем chai -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+    <!-- в chai есть много всего, выносим assert в глобальную область -->
+    <script>
+      var assert = chai.assert;
+    </script>
+  </head>
+  <body>
+    <script src="/hw1/ifElse/task1.js"></script>
+    <script src="/hw1/ifElse/task2.js"></script>
+    <script src="/hw1/ifElse/task3.js"></script>
+    <script src="/hw1/ifElse/task4.js"></script>
+    <script src="/hw1/ifElse/task5.js"></script>
+    <script src="/hw1/array/task1.js"></script>
+    <script src="/hw1/array/task2.js" ></script>
+    <script src="/hw1/array/task3.js"></script>
+    <script src="/hw1/array/task4.js"></script>
+    <script src="/hw1/array/task5.js"></script>
+    <script src="/hw1/array/task6.js"></script>
+    <script src="/hw1/array/task7.js"></script>
+    <script src="/hw1/array/task8.js"></script>
+    <script src="/hw1/array/task9.js"></script>
+    <script src="/hw1/cycle/task1.js"></script>
+    <script src="/hw1/cycle/task2.js"></script>
+    <script src="/hw1/cycle/task3.js"></script>
+    <script src="/hw1/cycle/task4.js"></script>
+    <script src="/hw1/cycle/task5.js"></script>
+    <script src="/hw1/cycle/task6.js"></script>
+    <script src="/hw1/function/task1.js" ></script>
+    <script src="/hw1/function/task2.js"></script>
+    <script src="/hw1/function/task3.js"></script>
+    <script src="/hw1/function/task4.js"></script>
+    <script>
+      // folder ifElse
+      describe("sumAndMul", function() {
+        it("impart a=10, b=20", function() {
+          assert.equal(sumAndMul(10, 20), 200);
+        });
+        it("impart a=11, b=20", function() {
+          assert.equal(sumAndMul(11, 20), 31);
+        });
+      });
+
+      describe("getQuarter", function() {
+        it("impart x=10, y=20", function() {
+          assert.equal(getQuarter(10, 20), "I");
+        });
+        it("impart x=11, y=-20", function() {
+          assert.equal(getQuarter(11, -20), "IV");
+        });
+        it("impart x=0, y=-20", function() {
+          assert.equal(getQuarter(0, -20), "incorrect input");
+        });
+      });
+      describe("getPositiveSum", function() {
+        it("impart a=10, b=20, c=30", function() {
+          assert.equal(getPositiveSum(10, 20, 30), 60);
+        });
+        it("impart a=11, b=20, c=-11", function() {
+          assert.equal(getPositiveSum(11, 20, -11), 31);
+        });
+      });
+      describe("getMaxRez", function() {
+        it("impart a=10, b=20, c=30", function() {
+          assert.equal(getMaxRez(10, 20, 30), 6003);
+        });
+        it("impart a=11, b=20, c=-11", function() {
+          assert.equal(getMaxRez(1, 1, 3), 8);
+        });
+      });
+      describe("getReiting", function() {
+        it("impart a=10", function() {
+          assert.equal(getReiting(10), "F");
+        });
+        it("impart a=91", function() {
+          assert.equal(getReiting(91), "A");
+        });
+      });
+      // folder array
+      describe("getMinElem", function() {
+        it("impart a=[0,1,3,4]", function() {
+          assert.equal(getMinElem([0,1,3,4]), 0);
+        });
+        it("impart a=[0,4,-1]", function() {
+          assert.equal(getMinElem([0,4,-1]), -1);
+        });
+      });
+      describe("getMaxElem", function() {
+        it("impart a=[0,1,3,4]", function() {
+          assert.equal(getMaxElem([0,1,3,4]), 4);
+        });
+        it("impart a=[0,4,-1]", function() {
+          assert.equal(getMaxElem([0,4,-1]), 4);
+        });
+      });
+      describe("getIndexMinElem", function() {
+        it("impart a=[0,1,3,4]", function() {
+          assert.equal(getIndexMinElem([0,1,3,4]), 0);
+        });
+        it("impart a=[0,4,-1]", function() {
+          assert.equal(getIndexMinElem([0,4,-1]), 2);
+        });
+      });
+      describe("getIndexMaxElem", function() {
+        it("impart a=[0,1,3,4]", function() {
+          assert.equal(getIndexMaxElem([0,1,3,4]), 3);
+        });
+        it("impart a=[0,4,-1]", function() {
+          assert.equal(getIndexMaxElem([0,4,-1]), 1);
+        });
+      });
+      describe("getSumIndexOdd", function() {
+        it("impart a=[0,1,3,4]", function() {
+          assert.equal(getSumIndexOdd([0,1,3,4]), 5);
+        });
+        it("impart a=[0,4,-1]", function() {
+          assert.equal(getSumIndexOdd([0,4,-1]), 4);
+        });
+      });
+      describe("getRevers", function() {
+        it("impart a=[0,1,2,3]", function() {
+          assert.equal(getRevers([0,1,2,3]), "3,2,1,0");
+        });
+        it("impart a=[8,7,5]", function() {
+          assert.equal(getRevers([5,7,8]), "8,7,5");
+        });
+      });
+      describe("getColOddElem", function() {
+        it("impart a=[0,1,2,3]", function() {
+          assert.equal(getColOddElem([0,1,2,3]), 2);
+        });
+        it("impart a=[8,7,5]", function() {
+          assert.equal(getColOddElem([5,7,8]), 2);
+        });
+      });
+      describe("getHalfRevers", function() {
+        it("impart a=[1,2,3,4]", function() {
+          assert.equal(getHalfRevers([1,2,3,4]), "3,4,1,2");
+        });
+        it("impart a=[5,7,8,9]", function() {
+          assert.equal(getHalfRevers([5,7,8,9]), "8,9,5,7");
+        });
+      });
+      describe("getSortBuble", function() {
+        
+        it("impart a=[1,5,7,8,9,2,3,4]", function() {
+          assert.equal(getSortBuble([1,5,7,8,6,9,2,3,4]), "1,2,3,4,5,6,7,8,9");
+        });
+      });
+      describe("getSortSelect", function() {
+        
+        it("impart a=[1,5,7,8,9,2,3,4]", function() {
+          assert.equal(getSortSelect([1,5,7,8,6,9,2,3,4]), "1,2,3,4,5,6,7,8,9");
+        });
+      });
+      describe("getSortInsert", function() {
+        
+        it("impart a=[1,5,7,8,9,2,3,4]", function() {
+          assert.equal(getSortInsert([1,5,7,8,6,9,2,3,4]), "1,2,3,4,5,6,7,8,9");
+        });
+      });
+      //folder cucle
+      describe("getSumEven", function() {
+        
+        it("impart a= 6", function() {
+          assert.equal(getSumEven(6), "12,3");
+        });
+      });
+      describe("getSimpleDigit", function() {
+        
+        it("impart a= 6", function() {
+          assert.equal(getSimpleDigit(6), "digit NOT simple");
+        });
+        it("impart a= 7", function() {
+          assert.equal(getSimpleDigit(7), "digit simple");
+        });
+      });
+      describe("getSqr", function() {
+        
+        it("impart a= 625", function() {
+          assert.equal(getSqr(625), 25);
+        });
+        it("impart a= 16", function() {
+          assert.equal(getSqr(16), 4);
+        });
+      });
+      describe("getFac", function() {
+        
+        it("impart a= 4", function() {
+          assert.equal(getFac(4), 24);
+        });
+        it("impart a= 16", function() {
+          assert.equal(getFac(5), 120);
+        });
+      });
+      describe("geDigitSum", function() {
+        
+        it("impart a= 4", function() {
+          assert.equal(getDigitSum(41), 5);
+        });
+        it("impart a= 16", function() {
+          assert.equal(getDigitSum(152), 8);
+        });
+      });
+      describe("getDigitRevers", function() {
+        
+        it("impart a= 4", function() {
+          assert.equal(getDigitRevers(41), 14);
+        });
+        it("impart a= 16", function() {
+          assert.equal(getDigitRevers(152), 251);
+        });
+      });
+      describe("getDay", function() {
+        
+        it("impart a= 4", function() {
+          assert.equal(getDay(4), "Thursday");
+        });
+        it("impart a= 1", function() {
+          assert.equal(getDay(1), "Monday");
+        });
+      });
+      describe("getStringNum", function() {
+        
+        it("impart a= 142", function() {
+          assert.equal(getStringNum(142), "Сто Сорок Два");
+        });
+        it("impart a= 1", function() {
+          assert.equal(getStringNum(1), '   Один');
+        });
+      });
+      describe("getNumString", function() {
+        
+        it("impart a= сто девяносто девять", function() {
+          assert.equal(getNumString("сто девяносто девять"), 199);
+        });
+        it("impart a= один", function() {
+          assert.equal(getNumString("один"),1);
+        });
+      });
+      describe("getDistance", function() {
+        
+        it("impart a= 0,1,1,0", function() {
+          assert.equal(getDistance(0,1,1,0), 1.4142135623730951);
+        });
+        it("impart a= 0,2,2,0", function() {
+          assert.equal(getDistance(0,2,2,0), 2.8284271247461903);
+        });
+      });
+    </script>
+
+    <!-- в элементе с id="mocha" будут результаты тестов -->
+    <div id="mocha"></div>
+    <!-- запустить тесты! -->
+    <script>
+      mocha.run();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- подключаем стили Mocha, для отображения результатов -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css"
+      <!--
+      подключаем
+      библиотеку
+      Mocha
+      --
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+    <!-- настраиваем Mocha: предстоит BDD-тестирование -->
+    <script>
+      mocha.setup("bdd");
+    </script>
+    <!-- подключаем chai -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+    <!-- в chai есть много всего, выносим assert в глобальную область -->
+    <script>
+      var assert = chai.assert;
+    </script>
+  </head>
+  <body>
+    
+    <script src="/hw1/function/task1.js" ></script>
+    <script src="/hw1/function/task2.js"></script>
+    <script src="/hw1/function/task3.js"></script>
+    <script src="/hw1/function/task4.js"></script>
+    <script>
+      
+
+
+      describe("getDay", function() {
+        
+        it("impart a= 4", function() {
+          assert.equal(getDay(4), "Thursday");
+        });
+        it("impart a= 1", function() {
+          assert.equal(getDay(1), "Monday");
+        });
+      });
+      describe("getStringNum", function() {
+        
+        it("impart a= 142", function() {
+          assert.equal(getStringNum(142), "Сто Сорок Два");
+        });
+        it("impart a= 1", function() {
+          assert.equal(getStringNum(1), '   Один');
+        });
+      });
+      describe("getNumString", function() {
+        
+        it("impart a= сто девяносто девять", function() {
+          assert.equal(getNumString("сто девяносто девять"), 199);
+        });
+        it("impart a= один", function() {
+          assert.equal(getNumString("один"),1);
+        });
+      });
+      describe("getDistance", function() {
+        
+        it("impart a= 0,1,1,0", function() {
+          assert.equal(getDistance(0,1,1,0), 1.4142135623730951);
+        });
+        it("impart a= 0,2,2,0", function() {
+          assert.equal(getDistance(0,2,2,0), 2.8284271247461903);
+        });
+      });
+    </script>
+
+    <!-- в элементе с id="mocha" будут результаты тестов -->
+    <div id="mocha"></div>
+    <!-- запустить тесты! -->
+    <script>
+      mocha.run();
+    </script>
+  </body>
+</html>
