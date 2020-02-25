@@ -41,7 +41,12 @@ function clickDigit(digit) {
       display.value = memoryDigitB + digit;
       memoryDigitB = display.value;
     }
-  } else {
+  }
+  // else if (flagOperator==true && memoryDigitB!=undefined){
+  //   return;
+  // }
+  
+  else {
     if (memoryDigitA == undefined) {
       display.value = digit;
       memoryDigitA = display.value;
@@ -78,6 +83,12 @@ function clickOperator(operator) {
   flagOperator = true;
   display.value = "";
   flagPoint = true;
+  if(flagOperator==true && memoryDigitB!=undefined){
+
+    
+
+    return clickClear();
+  }
 }
 
 function clickRezult() {
