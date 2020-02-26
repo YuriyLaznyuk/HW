@@ -45,7 +45,6 @@ function clickDigit(digit) {
   // else if (flagOperator==true && memoryDigitB!=undefined){
   //   return;
   // }
-  
   else {
     if (memoryDigitA == undefined) {
       display.value = digit;
@@ -70,11 +69,10 @@ function clickPoint(point) {
   } else {
     if (memoryDigitA == undefined) {
       return;
-    }
-    else{
-      display.value=memoryDigitA+point;
-      memoryDigitA=display.value;
-      flagPoint=false;
+    } else {
+      display.value = memoryDigitA + point;
+      memoryDigitA = display.value;
+      flagPoint = false;
     }
   }
 }
@@ -83,10 +81,7 @@ function clickOperator(operator) {
   flagOperator = true;
   display.value = "";
   flagPoint = true;
-  if(flagOperator==true && memoryDigitB!=undefined){
-
-    
-
+  if (flagOperator == true && memoryDigitB != undefined) {
     return clickClear();
   }
 }
@@ -97,7 +92,7 @@ function clickRezult() {
   memoryDigitB = undefined;
   memoryOperator = "";
   flagOperator = false;
-  flagPoint=true;
+  flagPoint = true;
 }
 function clickClear() {
   memoryDigitA = undefined;
@@ -105,7 +100,7 @@ function clickClear() {
   memoryOperator = "";
   flagOperator = false;
   display.value = "0";
-  flagPoint=true;
+  flagPoint = true;
 }
 function clickCE() {
   if (display != 0) {
