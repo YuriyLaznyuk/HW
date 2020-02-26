@@ -81,7 +81,12 @@ function clickOperator(operator) {
   flagOperator = true;
   display.value = "";
   flagPoint = true;
-  if (flagOperator == true && memoryDigitB != undefined) {
+  if (flagOperator == true && memoryDigitB != undefined)
+     {
+    return clickClear();
+  }
+  else if(memoryDigitA==undefined&&memoryDigitB==undefined)
+  {
     return clickClear();
   }
 }
@@ -93,6 +98,7 @@ function clickRezult() {
   memoryOperator = "";
   flagOperator = false;
   flagPoint = true;
+  
 }
 function clickClear() {
   memoryDigitA = undefined;
