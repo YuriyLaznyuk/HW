@@ -237,43 +237,7 @@ Alist.prototype.getHalfRevers = function() {
 };
 
 
-// к заданию не относится
-// Alist.prototype.changefInsert = function() {
-//   for (let i = 0; i < parseInt(this.getSize() / 2); i++) {
-//     let temp = this.arr[i];
-//     this.arr[i] = this.arr[parseInt(this.getSize() / 2) + i];
-//     this.arr[parseInt(this.getSize() / 2) + i] = temp;
-//   }
-//   return this.arr;
-// };
 
-// let a = [2, 3, 4, 5, 9, 6, 8, 0];
-// let myArray = new Alist(a);
-
-// console.log(myArray.getSize());
-// console.log(myArray.getRevers());
-// console.log(myArray.addStart(77));
-// console.log(myArray.addEnd(99));
-// // console.log(myArray.sort());
-// //console.log(myArray.delStart());
-// // console.log(myArray.delEnd());
-// // console.log(myArray.delPos(7));
-// //console.log(myArray.myToString());
-// // console.log(myArray.getIndex(7));
-// // console.log(myArray.setIndex(13, 77));
-
-// console.log(myArray.getMin());
-// console.log(myArray.getMax());
-// console.log(myArray.getMinIndex());
-// console.log(myArray.getMaxIndex());
-// //  console.log(myArray.changefInsert());
-// // console.log(myArray.getHalfRevers());
-// console.log(myArray.getClear());
-// console.log(myArray.addStart(99));
-// console.log(myArray.myToString());
-// console.log(myArray.Clear());
-// console.log(myArray.addStart(100));
-// console.log(myArray.myToString());
 
 module.exports.Alist = Alist;
 
