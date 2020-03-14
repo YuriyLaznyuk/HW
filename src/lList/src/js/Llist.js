@@ -4,11 +4,11 @@
 
 const {Node}=require('../js/node');
 const {List}=require('../js/list');
-module.exports.Llist=Llist;
+
 
 
 function Llist(array) {
-  // List.apply(this);
+  List.apply(this);
 
   this.root = null;
   this.defaultArray = array;
@@ -16,7 +16,7 @@ function Llist(array) {
   this.arr = [];
 }
 
-Llist.prototype = Object.create(Llist.prototype);
+Llist.prototype = Object.create(List.prototype);
 Llist.prototype.constructor = Llist;
 // инициализация
 Llist.prototype.init = function(array) {
@@ -317,18 +317,5 @@ Llist.prototype.getMinIndex = function() {
 
   return index;
 };
+module.exports.Llist=Llist;
 
-let llist = new Llist([3, 6, 4, 5, 2]);
-
-// llist.clearInit();
-// llist.setIndex(1, 10);
-// llist.setIndex(5, 30);
-// llist.setIndex(3, 20);
-console.log(llist.getIndex(2).data);
-llist.getRevers();
-console.log(llist.toArray());
-llist.getHalfRevers();
-
-console.log(llist.toArray());
-llist.sort();
-console.log(llist.toArray());

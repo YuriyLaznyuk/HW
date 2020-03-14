@@ -3,18 +3,48 @@ let textId = document.getElementById("id");
 let textFName = document.getElementById("fname");
 let textLName = document.getElementById("lname");
 let textAge = document.getElementById("age");
+let textEmail = document.getElementById("email");
+let textPhone = document.getElementById("phone");
+let openBase = indexedDB.open("Persons1", 1);
+let localPerson;
+let personsList=[];
+
+// indexedDB
+
+function addDB() {
+  if(flagDB==false){
+    return;
+  }
+  openBase.onupgradeneeded=function(event){
+    let db1=event.target.result;
+    let objecStor=db1.createObjectStore("persons");    
+    for (const key in personsList) {
+      objecStor.add(personsList[key], personsList[key].mId);;
+  }
+}
+}
+// addDB();
+// addDB("Nban", 78);
 let mId;
 let mFName;
 let mLName;
 let mAge;
+let mEmail;
+let mPhone;
 let persons = [];
-let personsList = []; // массив персон для localStorage
-function Person(mId, mFName, mLName, mAge) {
+//let personsList = []; // массив персон для localStorage
+function Person(mId, mFName, mLName, mAge, mEmail, mPhone) {
   this.mId = mId;
   this.mFName = mFName;
   this.mLName = mLName;
   this.mAge = mAge;
+  this.mEmail = mEmail;
+  this.mPhone = mPhone;
 }
+let flagLS = false;
+let flagDB = false;
+let flagServer = false;
+
 
 textId.addEventListener("change", function(e) {
   ShowId(e.target.value);
@@ -29,11 +59,24 @@ textLName.addEventListener("change", function(e) {
 textAge.addEventListener("change", function(e) {
   ShowAge(e.target.value);
 });
+textEmail.addEventListener("change", function(e) {
+  ShowEmail(e.target.value);
+});
+textPhone.addEventListener("change", function(e) {
+  ShowPhone(e.target.value);
+});
 
+//кнопки
 let buttonCreate = document.getElementById("create");
 buttonCreate.addEventListener("click", function(e) {
   createTable(e.target.value);
 });
+let buttonCreate1=document.getElementById("create");
+buttonCreate1.addEventListener('click',function(){
+  addDB(personsList, mId);
+})
+
+
 
 let buttonUpdate = document.getElementById("update");
 buttonUpdate.addEventListener("click", function(e) {
@@ -45,21 +88,40 @@ buttonDelete.addEventListener("click", function(e) {
   deliteElementId(e.target.value);
 });
 
-let buttonRead = document.getElementById("read");
-buttonRead.addEventListener("click", function(e) {
-  readTable(e.target.value);
+// let buttonRead = document.getElementById("read");
+// buttonRead.addEventListener("click", function(e) {
+//   readTable(e.target.value);
+// });
+// кнопки радио
+let buttonLS = document.getElementById("ls");
+buttonLS.addEventListener("change", function(e) {
+  workLS(e.target.value);
 });
 
+let buttonDB = document.getElementById("db");
+buttonDB.addEventListener("change", function(e) {
+  workDB(e.target.value);
+});
+
+let buttonServer = document.getElementById("server");
+buttonServer.addEventListener("change", function(e) {
+  workServer(e.target.value);
+});
+//переменная блока вывода
 let root = document.getElementById("root");
 
+// функции
 function createTable() {
   if (persons.includes(mId) == true) {
     alert("This Id is not create");
+
+    myClear();
     return;
   }
-  let localPerson = new Person(mId, mFName, mLName, mAge);
+  let localPerson = new Person(mId, mFName, mLName, mAge, mEmail, mPhone);
   let divA = document.createElement("div");
   divA.id = mId;
+  divA.className = "info";
 
   let divN1 = document.createElement("div");
   divN1.className = "info1";
@@ -85,22 +147,38 @@ function createTable() {
   divA.append(divN4);
   textAge.value = "";
 
+  let divN5 = document.createElement("div");
+  divN5.className = "info5";
+  divN5.innerHTML = mEmail;
+  divA.append(divN5);
+  textEmail.value = "";
+
+  let divN6 = document.createElement("div");
+  divN6.className = "info6";
+  divN6.innerHTML = mPhone;
+  divA.append(divN6);
+  textPhone.value = "";
+
   let pipl = mId;
 
   persons.push(pipl);
   // добавление
   personsList.push(localPerson);
-  localStorage.setItem("persons", JSON.stringify(personsList));
-
+  // localStorage.setItem("persons", JSON.stringify(personsList));
+  if (flagLS == true) {
+    localStr(personsList);
+  }  if (flagDB == true) {
+  }
+  
+  
   root.append(divA);
 }
+
 function updateElement() {
   if (persons.includes(mId) == false) {
     alert("Not update method this Id");
-    textId.value = "";
-    textFName.value = "";
-    textLName.value = "";
-    textAge.value = "";
+
+    myClear();
     return;
   } else {
     let updateA = document.getElementById(mId);
@@ -109,30 +187,27 @@ function updateElement() {
     childF[1].innerHTML = mFName;
     childF[2].innerHTML = mLName;
     childF[3].innerHTML = mAge;
+    childF[4].innerHTML = mEmail;
+    childF[5].innerHTML = mPhone;
     // перезапись
+    let localPerson1 = new Person(mId, mFName, mLName, mAge, mEmail, mPhone);
     for (let i = 0; i < personsList.length; i++) {
-      if (personsList[i].mId == mId) {
-        personsList[i].mFName = mFName;
-        personsList[i].mLName = mLName;
-        personsList[i].mAge = mAge;
+      if (personsList[i].mId === mId) {
+        personsList[i] = localPerson1;
       }
     }
-    localStorage.setItem("persons", JSON.stringify(personsList));
-
-    textId.value = "";
-    textFName.value = "";
-    textLName.value = "";
-    textAge.value = "";
+    // personsList.push(localPerson1);
+    // localStorage.setItem("persons", JSON.stringify(personsList));
+    localStr(personsList);
+    myClear();
   }
 }
 
 function deliteElementId() {
   if (persons.includes(mId) == false) {
     alert("Not delite method this Id");
-    textId.value = "";
-    textFName.value = "";
-    textLName.value = "";
-    textAge.value = "";
+
+    myClear();
     return;
   } else {
     let deliteA = document.getElementById(mId);
@@ -143,25 +218,33 @@ function deliteElementId() {
     // удаление
     for (let i = 0; i < personsList.length; i++) {
       if (personsList[i].mId == p1) {
-        delete personsList[i];
+        personsList.splice(i, 1);
       }
     }
-    localStorage.setItem("persons", JSON.stringify(personsList));
-    textId.value = "";
-    textFName.value = "";
-    textLName.value = "";
-    textAge.value = "";
+    // localStorage.setItem("persons", JSON.stringify(personsList));
+    localStr(personsList);
+
+    myClear();
   }
 }
+
+function localStr(personsList) {
+  localStorage.setItem("persons", JSON.stringify(personsList));
+  return localStorage.getItem("persons");
+}
+
 /////////////////////////////
 function readTable() {
   if (persons.length != 0) {
     return;
   }
   let date = JSON.parse(localStorage.getItem("persons"));
+  // let date=JSON.parse(localStr(personsList));
+
   for (let i = 0; i < date.length; i++) {
     let divA = document.createElement("div");
     divA.id = date[i].mId;
+    divA.className = "info";
 
     let divN1 = document.createElement("div");
     divN1.className = "info1";
@@ -187,17 +270,54 @@ function readTable() {
     divA.append(divN4);
     textAge.value = "";
 
+    let divN5 = document.createElement("div");
+    divN5.className = "info5";
+    divN5.innerHTML = date[i].mEmail;
+    divA.append(divN5);
+    textEmail.value = "";
+
+    let divN6 = document.createElement("div");
+    divN6.className = "info6";
+    divN6.innerHTML = date[i].mPhone;
+    divA.append(divN6);
+    textPhone.value = "";
+
     let pipl = date[i].mId;
 
     persons.push(pipl);
     // добавление
-    // personsList.push(localPerson);
-    // localStorage.setItem('persons',JSON.stringify(personsList));
+    let localPerson2 = new Person(
+      date[i].mId,
+      date[i].mFName,
+      date[i].mLName,
+      date[i].mAge,
+      date[i].mEmail,
+      date[i].mPhone
+    );
+
+    personsList.push(localPerson2);
 
     root.append(divA);
   }
+  localStr(personsList);
+}
+function workLS() {
+  flagLS = true;
+  flagDB = false;
+  flagServer = false;
+  readTable();
 }
 
+function workDB() {
+  flagDB = true;
+  flagLS = false;
+  flagServer = false;
+}
+function workServer() {
+  flagServer = true;
+  flagDB = false;
+  flagLS = false;
+}
 ///////////////////////////////
 
 function ShowId(dif) {
@@ -212,4 +332,24 @@ function ShowLname(dif) {
 function ShowAge(dif) {
   mAge = dif;
 }
+function ShowPhone(dif) {
+  mPhone = dif;
+}
+function ShowEmail(dif) {
+  mEmail = dif;
+}
+
+function myClear() {
+  textId.value = "";
+  textFName.value = "";
+  textLName.value = "";
+  textAge.value = "";
+  textEmail.value = "";
+  textPhone.value = "";
+}
+// method indexedDB
+
+
+// addDB(personsList);
 // localStorage.clear();
+addDB();

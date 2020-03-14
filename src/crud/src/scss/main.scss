@@ -1,16 +1,141 @@
-div div div{
-
-  float: left;
-  border: 1px solid black; 
-  width: 150px;
-  height: 20px;
+.head {
+  display: flex;
+  width: 80%;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 0 auto;
 }
-div{
-  margin: 5px 5px 5px 0px;
+
+.radiobutton {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-width: 150px;
+  justify-content: center;
+  background-color: blue;
+  color: brown;
+}
+
+.input_button {
+  width: 78%;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 211px;
+  margin-left: 0;
+  margin-right: 0;
+  height: 20px;
+  text-align: center;
+}
+
+button[type="button"] {
+  width: 215px;
+  height: 25px;
+}
+
+.conteiner_table,
+#root .info {
+  display: flex;
+  width: 80%;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border-top: 1px solid;
+}
+.radiobutton_num {
+  width: 145px;
+  padding-left: 7px;
+}
+.conteiner_table__col,
+#root .info div {
+  min-width: 130px;
+  height: 25px;
+  text-align: center;
+  padding-top: 5px;
+}
+
+#create {
+  background-color: rgb(176, 238, 176);
+}
+#create:hover {
+  border-radius: 13px;
+  color: white;
+  background-color: rgb(42, 173, 9);
+  border: 3px solid wheat;
+}
+#update {
+  background-color: rgb(226, 226, 15);
+}
+#update:hover {
+  border-radius: 13px;
+  color: rgb(233, 103, 16);
+  background-color: rgba(238, 255, 0, 0.726);
+  border: 3px solid wheat;
+}
+#delete {
+  background-color: rgba(212, 14, 14, 0.637);
+}
+#delete:hover {
+  border-radius: 13px;
+  color: rgba(18, 87, 236, 0.993);
+  background-color: rgb(255, 0, 0);
+  border: 3px solid wheat;
+}
+
+.radiobutton_num:hover {
+  color: white;
+}
+input[type="radio"]:checked:after {
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: rgb(236, 223, 43);
+  content: "";
+  display: inline-block;
+  border: 2px solid white;
+}
+input[type="radio"] {
+  cursor: pointer;
+}
+
+@media (max-width: 1056px) and (min-width: 260px) {
+  .conteiner_table__col,
+  #root .info {
+    width: 214px;
+    border: 1px solid;
+  }
+
+  .radiobutton {
+    width: 214px;
+    border: 1px solid;
+  }
+
+  .conteiner_table,
+  #root .info div {
+    border-top: 0px;
+    margin-top: 0;
+  }
+}
+@media (max-width:1560px) and (min-width:1414px){
+  input[type="text"],
+input[type="number"] {
+  width: 300px;
   
 }
-div div {
-  width: 800px;
-  height: 30px;
-  border:white;
+
+button[type="button"] {
+  width: 304px;
+  
+}
+
+
 }
