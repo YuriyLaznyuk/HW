@@ -1,36 +1,63 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <title>Крад</title>
     <meta charset="UTF-8" />
     <meta name="keywords" content="крад" />
-    <meta name="description" content="карад для разработки" />
+    <meta name="description" content="крад для разработки" />
     <meta name="author" content="автор Юра" />
     <meta name="copyright" content="права принадлежат Юре" />
     <meta name="robots" content="all" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700,800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
-  </head>
-  <body>
-    id
-    <input type="number" name="" id="id" value="" />
-    Fname
-    <input type="text" name="" id="fname" value="" />
-    Lname
-    <input type="text" name="" id="lname" value="" />
-    Age
-    <input type="number" name="" id="age" value="" />
-    <p></p>
-    <input type="button" value="CREATE" id="create" />
-    <input type="button" value="READ" id="read" />
-    <input type="button" value="UPDATE" id="update" />
-    <input type="button" value="DELITE" id="delete" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700,800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+    <title>Крад</title>
+</head>
+<body>
+    <div class="head">
+<div class="radiobutton">
+    <div class="radiobutton_num">
+        <input type="radio"name="but" id="ls">
+        <label for="db">LocalStorage</label>
+        
+    </div> 
+    <div class="radiobutton_num">
+        <input type="radio"name="but" id="db">
+        <label for="db">DataBase</label>
+        
+    </div> 
+    <div class="radiobutton_num">
+        <input type="radio"name="but" id="server">
+        <label for="db">Server</label>
+        
+    </div> 
+
+</div>
+<div class="input_button">
+    <input type="number" id="id" placeholder="Id" class="text">
+    <input type="text" id="fname" placeholder="FName" class="text">
+    <input type="text" id="lname" placeholder="LName" class="text">
+
+    <input type="number" id="age" placeholder="Age" class="text">
+    <input type="text" id="email" placeholder="Email" class="text">
+    <input type="number" id="phone" placeholder="Phone" class="text">
+
+    <button type="button" value="CREATE" id="create" class="button" >CREATE</button>
+    <!-- <input type="button" value="READ" id="read" /> -->
+   <button type="button" value="UPDATE" id="update" class="button" >UPDATE</button>
+   <button type="button" value="DELITE" id="delete" class="button" >DELETE</button>
+
+</div>
+
+    </div>
+    <div class="conteiner_table">
+        <div class="conteiner_table__col">ID</div>
+        <div class="conteiner_table__col">FName</div>
+        <div class="conteiner_table__col">LName</div>
+        <div class="conteiner_table__col">Age</div>
+        <div class="conteiner_table__col">Email</div>
+        <div class="conteiner_table__col">Phone</div>
+    </div>
     <div id="root"></div>
-    <!-- Scripts -->
     <script src="js/index.js"></script>
   </body>
 </html>

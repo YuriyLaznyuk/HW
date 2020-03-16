@@ -4,7 +4,7 @@ function List(array) {}
 List.prototype.init = function() {};
 List.prototype.getSize = function() {};
 List.prototype.addStart = function() {};
-List.prototype.addAnd = function() {};
+List.prototype.addEnd = function() {};
 List.prototype.delStar = function() {};
 List.prototype.delEnd = function() {};
 List.prototype.delPos = function() {};
