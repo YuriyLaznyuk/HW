@@ -1,4 +1,6 @@
 //Получить строковое название дня недели по номеру дня
+
+//Change branch in one_branch
 "use strict"
 function getDay(a) {
   let number = a;
